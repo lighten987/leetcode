@@ -22,7 +22,7 @@ public:
 执行用时: 192 ms, 在Two Sum的C++提交中击败了10.58% 的用户  
   
 2.两数相加（未ac）  
-class Solution {
+class Solution{
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         ListNode* l;
@@ -50,4 +50,30 @@ public:
         
     }
 };
+//修改后代码    
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode* l = NULL,**t = &l;
+        int yu = 0,x = 0, y = 0,sum = 0;
+            while(l1!=NULL || l2!=NULL){
+               x = l1->val;
+               y = l2->val;
+               sum = x+y+yu;
+                ListNode *node = new ListNode(sum%10);
+                *t = node;
+                t=(&node->next);
+                yu = sum/10;
+                l1 = l1->next;
+                l2 = l2->next;
+            }
+        if(yu){
+           ListNode *node = new ListNode(yu%10); 
+           *t = node;
+        }
+            return l;   
+    }
+};  
+
+
 
