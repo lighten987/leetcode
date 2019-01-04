@@ -74,5 +74,21 @@ public:
     }  
 };  
 //注意：链表数字可能出现不等长情况，用等长情况写的代码容易出现指向空指针，所以需要判断是否是尾链表，如果是尾链表还要注意以后的取值都为零  
+  
+11.盛最多水的容器  
+class Solution {  
+public:  
+    int maxArea(vector<int>& height) {  
+        int max = 0;  
+        for(int i = 0 ; i < height.size()-1 ; i++){  
+            for(int j = i+1 ; j < height.size() ; j++){  
+                int h = (height[i]<height[j])? height[i]:height[j];  
+                if(max < h*(j-i))max = h*(j-i);  
+            }  
+        }  
+        return max;  
+    }  
+};  
+  
 
 
